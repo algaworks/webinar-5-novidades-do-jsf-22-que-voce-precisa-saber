@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<ui:composition template="/Template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<f:metadata>
+		<f:viewAction action="#{catalogoProdutosBean.consultar}" />
+	</f:metadata>
+
+	<ui:define name="corpo">
+
+		<form jsf:id="frm">
+		    <input type="text" size="60" placeholder="O que está procurando?"
+		    	jsf:value="#{catalogoProdutosBean.descricao}" />
+		
+		    <button jsf:action="#{catalogoProdutosBean.consultar}">Consultar</button>
+		    
+		    <div class="vitrine">
+		    	<ui:repeat var="produto" value="#{catalogoProdutosBean.produtosFiltrados}">
+			        <div>
+			            <img jsf:value="/foto?produto=#{produto.id}" width="400" height="400" />
+			            <span>#{produto.descricao}</span>
+			        </div>
+		        </ui:repeat>
+		    </div>
+		</form>
+		
+	</ui:define>
+
+</ui:composition>

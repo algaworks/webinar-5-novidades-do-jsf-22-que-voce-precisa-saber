@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<ui:composition template="/Template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="corpo">
+		<h1>Cadastro de Produto</h1>
+		
+		<h:form id="frm" enctype="multipart/form-data">
+		
+			<h:messages/>
+		
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Descrição" />
+				<h:inputText required="true" size="80"
+					value="#{cadastroProdutoBean.produto.descricao}"
+					pt:placeholder="Qual é a melhor descrição para esse produto?" />
+				
+				<h:outputLabel value="Diversão" />
+				<h:inputText required="true"
+					value="#{cadastroProdutoBean.produto.nivelDiversao}"
+					pt:type="range" pt:min="1" pt:max="10" />
+			
+				<h:outputLabel value="Foto" />
+				<h:inputFile required="true" 
+					value="#{cadastroProdutoBean.foto}" />
+			
+				<h:outputLabel/>
+				<h:commandButton value="Adicionar"
+					action="#{cadastroProdutoBean.adicionar}" />
+			</h:panelGrid>
+			
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>
